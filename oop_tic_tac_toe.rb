@@ -35,7 +35,9 @@ class Board
 
   def winning_condition?(marker)
     WINNING_LINES.each do |line|
-      return true if @data[line[0]].value == marker && @data[line[1]].value == marker && @data[line[2]].value == marker
+      return true if @data[line[0]].value == marker && 
+                      @data[line[1]].value == marker && 
+                      @data[line[2]].value == marker
     end
     false
   end
@@ -61,7 +63,7 @@ class Square
   end
 
   def empty?
-    @value == ' '
+    !occupied?
   end
 
   def to_s
