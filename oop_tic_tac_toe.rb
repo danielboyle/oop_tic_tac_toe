@@ -39,6 +39,10 @@ class Board
     end
     false
   end
+
+  def reset
+    initialize
+  end
 end
 
 class Square
@@ -130,11 +134,19 @@ class Game
     end
   end
 
+  def end_game
+    system "clear"
+    puts
+    puts "Thanks for playing!"
+    puts
+  end
+
   def play
     human.set_name
-    @board.draw
     begin
+      @board.reset
       loop do
+        @board.draw
         current_player_mark_square
         @board.draw
         if current_player_win?
@@ -147,6 +159,7 @@ class Game
         end
       end
     end until play_again? == false
+    end_game
   end
 end
 
